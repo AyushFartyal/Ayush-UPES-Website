@@ -51,6 +51,7 @@
         </nav>
 
         <div class="header-content">
+            <p style="background-image: url('https://blog.upes.ac.in/wp-content/uploads/2022/04/campus-image.jpg');">
             <h1>UPES- University of Petroleum And Energy Studies</h1>
             <h3>University Of Tommorow</h3>
             <p>Ready to join? Enter your email to know more about upes.</p>
@@ -58,6 +59,7 @@
                 <input type="email" placeholder="Email address" required>
                 <button type="submit">Apply Now</button>
             </form>
+        </p>
         </div>
     </div>
 
@@ -204,25 +206,25 @@
         <h2 style="color: rgb(255, 85, 0); font-size: 50px; text-align: center;">
             EVENTS
         </h2>
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
-            <ul data-slides>
-                <li class="slide" data-active>
-                    <img src="https://garhwalpost.in/wp-content/uploads/2021/08/IMG-20210823-WA0070.jpg" alt="Events Image #1">
-                </li>
-                <li class="slide">
-                    <img src="https://garhwalpost.in/wp-content/uploads/2024/02/UPES-2-scaled.jpg" alt="Events Image #2">
-                </li>
-                <li class="slide">
-                    <img src="https://i.ytimg.com/vi/reJ8u-jYOD4/hqdefault.jpg" alt="Events Image #3">
-                </li>
-                <li class="slide">
-                    <img src="https://th.bing.com/th/id/OIP.c-NLAqE0Jl8m1O7Peo8ouwHaEp?rs=1&pid=ImgDetMain" alt="Events Image #4">
-                </li>
+        <div class="carousel">
+            <button class="carousel-button prev">❮</button>
+            <ul>
+              <li class="slide" data-active>
+                <img src="https://garhwalpost.in/wp-content/uploads/2021/08/IMG-20210823-WA0070.jpg" alt="Slide 1">
+              </li>
+              <li class="slide">
+                <img src="https://garhwalpost.in/wp-content/uploads/2024/02/UPES-2-scaled.jpg" alt="Slide 2">
+              </li>
+              <li class="slide">
+                <img src="https://i.ytimg.com/vi/reJ8u-jYOD4/hqdefault.jpg" alt="Slide 3">
+              </li>
+              <li class="slide">
+                <img src="https://th.bing.com/th/id/OIP.c-NLAqE0Jl8m1O7Peo8ouwHaEp?rs=1&pid=ImgDetMain" alt="Slide 4">
+              </li>
             </ul>
-        </div>
-    </section>
+            <button class="carousel-button next">❯</button>
+          </div>
+          
 
 
     <section class="recruiters" id="recruiters">
@@ -315,5 +317,43 @@
             </div>
         </div>
  
+
+        <script>
+            // Get the elements for carousel slides and buttons
+            const slides = document.querySelectorAll('.slide');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            
+            let currentSlide = 0;
+          
+            // Function to hide all slides
+            function hideAllSlides() {
+              slides.forEach(slide => {
+                slide.removeAttribute('data-active');
+              });
+            }
+          
+            // Function to show a slide
+            function showSlide(index) {
+              hideAllSlides();
+              slides[index].setAttribute('data-active', true);
+            }
+          
+            // Event listener for the next button
+            nextButton.addEventListener('click', () => {
+              currentSlide = (currentSlide + 1) % slides.length; // Loop back to the first slide
+              showSlide(currentSlide);
+            });
+          
+            // Event listener for the previous button
+            prevButton.addEventListener('click', () => {
+              currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Loop to the last slide if negative
+              showSlide(currentSlide);
+            });
+          
+            // Initialize the first slide as active
+            showSlide(currentSlide);
+          </script>
+          
 </body>
 </html>
